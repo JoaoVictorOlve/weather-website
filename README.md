@@ -1,2 +1,2 @@
 # ufc-app
-Creating an website about UFC.
+Creating an app about weather using HTML, CSS, JavaScript and WeatherAPI.
