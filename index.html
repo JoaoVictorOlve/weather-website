@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style/style.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="background-container">
+        <header>
+            <div id="searchbar-container">
+                <input placeholder="" class="search-bar" type="text" placeholder="Search">
+                <button class="search-button">
+                    <img class="search-icon" src="./style/src/search.svg">
+                </button>
+            </div>
+        </header>
+
+        <main class="main-container">
+            <div class="top-container">
+                <h2 id="city-name">Blumenau</h2>
+            </div>
+            <div class="middle-container">
+                <div class="weather-icon-container">
+                    <img class="weather-icon" src="./style/src/weather-icon.png">
+                </div>
+                <div id="weather-temp" class="weather-info">15</div>
+                <div class="celsius-termometer">°C</div>
+                <div class="general-infos-container">
+                    <p id="humidity" class="general-info">Humidity: 91%</p>
+                    <p id="wind" class="general-info">Wind: 5km/h</p>
+                </div>
+            </div>
+            <div class="bottom-container">
+                <div class="data-and-condition-container">
+                    <div id="weather-description" class="data-and-cond-info">Clear</div>
+                </div>
+            </div>
+        </main>
+        <script src="./script.js" defer></script>
+    </div>
+</body>
+</html>

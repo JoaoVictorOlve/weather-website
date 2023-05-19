@@ -1,0 +1,150 @@
+* {
+    margin:0;
+    font-family:Robot, arial;
+}
+
+body{
+    width:100%;
+    height:100%;
+}
+
+header{
+    height:10vh;
+}
+
+.background-container{
+    width:100%;
+    height:100%;
+    background-color:green;
+}
+
+.weather-icon{
+    width:60px;
+}
+
+.main-container{
+    height:90vh;
+    display:grid;
+    grid-template-rows:100px 200px 1fr;
+}
+
+.top-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#city-name{
+    font-size:50px;
+}
+
+.middle-container{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:top;
+}
+
+.weather-icon{
+    width:150px;
+}
+
+.weather-info{
+    margin-top:30px;
+    font-size:140px;
+    margin-left:40px;
+    margin-right:20px;
+}
+
+.weather-icon-container{
+    display:flex;
+    align-items:center;
+}
+
+.celsius-termometer{
+    margin-left:10px;
+    margin-top:50px;
+    font-size:50px;
+}
+
+.general-infos-container{
+    margin-top:50px;
+    font-size:50px;
+    margin-left:20px;
+    color:#70757a;
+}
+
+.general-info{
+    font-size:20px;
+}
+
+.bottom-container{
+    display:flex;
+    justify-content:center;
+}
+
+.data-and-condition-container {
+    display:flex;
+    justify-content:top;
+    flex-direction:column;
+    margin-top:40px;
+}
+
+.data-and-cond-info{
+    display:flex;
+    justify-content:center;
+    font-size:30px;
+    color:#70757a;
+}
+
+header{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+#searchbar-container{
+    display:flex;
+    justify-content:center;
+    position:relative;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    background-color:white;
+}
+
+#searchbar-container:hover{
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+#searchbar-container:focus{
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+.search-bar{
+    height:40px;
+    width:500px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border:none;
+    padding-left:20px;
+    padding-right:1px;
+    z-index:100;
+}
+
+.search-bar:focus{
+    outline: none;
+    border: none;
+  
+}
+
+.search-button{
+    height:40px;
+    border:none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width:50px;
+    background:none;
+}
+
+.search-icon{
+    width:30px;
+}
