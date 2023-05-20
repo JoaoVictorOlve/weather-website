@@ -15,7 +15,8 @@ header{
 .background-container{
     width:100%;
     height:100%;
-    background-color:green;
+    background-size:cover;
+    object-fit:contain;
 }
 
 .weather-icon{
@@ -46,7 +47,7 @@ header{
 }
 
 .weather-icon{
-    width:150px;
+    width:50px;
 }
 
 .weather-info{
@@ -54,11 +55,6 @@ header{
     font-size:140px;
     margin-left:40px;
     margin-right:20px;
-}
-
-.weather-icon-container{
-    display:flex;
-    align-items:center;
 }
 
 .celsius-termometer{
@@ -86,8 +82,8 @@ header{
 .data-and-condition-container {
     display:flex;
     justify-content:top;
-    flex-direction:column;
-    margin-top:40px;
+    flex-direction:row;
+    margin-top:30px;
 }
 
 .data-and-cond-info{
@@ -95,6 +91,8 @@ header{
     justify-content:center;
     font-size:30px;
     color:#70757a;
+    margin-top:10px;
+    margin-right:5px;
 }
 
 header{
