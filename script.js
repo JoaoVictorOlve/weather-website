@@ -10,6 +10,9 @@ let backgroundElement = document.querySelector(".background-container")
 
 let weatherIconElement = document.querySelector(".weather-icon")
 
+let searchButtonElement = document.querySelector("#search-button")
+let searchBarElement = document.querySelector("#search-bar")
+
 
 //https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
@@ -78,16 +81,53 @@ const changeIcon = async(city)=>{
 const showWeatherData = async (city)=>{
 	let data = await getWeatherData(city)
 
+	let kmPerSecWindSpeed = Math.floor((data.wind.speed * 3600) / 1000);
+
 	cityNameElement.textContent = data.name;
 	weatherTempElement.textContent = Math.floor(data.main.temp);
 	humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
-	windElement.textContent = `Wind: ${data.wind.speed}km/h`;
+	windElement.textContent = `Wind: ${kmPerSecWindSpeed}km/h`;
 	weatherDescriptionElement.textContent = (data.weather[0].description).charAt(0).toUpperCase() + (data.weather[0].description).slice(1);
 	weatherIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
-
 
 	changeIcon(data)
 }
 
+const loadPage = ()=>{
+	if (localStorage.getItem("lastCityResearched") != null){
+		lastCityResearched = localStorage.getItem("lastCityResearched")
+		showWeatherData(lastCityResearched)
+	} else {
+		showWeatherData("Lisboa")
+	}
+}
 
-showWeatherData("Kiowa")
+searchButtonElement.addEventListener("click", searchCityWeather)
+searchBarElement.addEventListener("keydown", (event)=>{
+	if (event.key == "Enter"){
+		searchCityWeather();
+	}
+})
+
+async function searchCityWeather() {
+	let searchedContent = searchBarElement.value;
+	try {
+	  const response = await getWeatherData(searchedContent);
+	  if (response.cod == "404"){
+		throw new Error("Not Found");
+	  } else {
+		showWeatherData(searchedContent);
+		localStorage.setItem("lastCityResearched", searchedContent);  
+	  }
+	} catch (error) {
+	  if (error instanceof Error && error.message == "Not Found") {
+		console.log("Error: Not Found");
+	  } else {
+		console.log("Other error occurred");
+	  }
+	  
+	  // Stop the function execution
+	  return;
+	}
+  }
+  
