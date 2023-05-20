@@ -1,4 +1,4 @@
-const apiKey = "7ccc44954f365068b972d414cc062eb7"
+const apiKey = "40bb75794a32e2d8a6d3f2e70b3cb224" // API was deleted
 
 let cityNameElement = document.querySelector("#city-name")
 let weatherTempElement = document.querySelector("#weather-temp")
@@ -19,13 +19,9 @@ let closeButton = document.getElementsByClassName("close")[0];
 let modalTitleElement = document.querySelector("#modal-title")
 let modalDescriptionElement = document.querySelector("#modal-description")
 
-
-
-//https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-
 const getWeatherData = async (city) => {
   
-	const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
+	const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=en`;
   
 	const response = await fetch(apiWeatherURL);
 	const data = await response.json();
@@ -105,7 +101,7 @@ const loadPage = ()=>{
 		lastCityResearched = localStorage.getItem("lastCityResearched")
 		showWeatherData(lastCityResearched)
 	} else {
-		showWeatherData("Lisboa")
+		showWeatherData("Lisbon")
 	}
 }
 
@@ -131,17 +127,17 @@ async function searchCityWeather() {
 	  }
 	} catch (error) {
 	  if (error instanceof Error && error.message === "Not Found") {
-		modalTitleElement.textContent = "Ops!"
-		modalDescriptionElement.textContent = "Não foi possível encontrar a cidade solicitada."
+		modalTitleElement.textContent = "Oops!"
+		modalDescriptionElement.textContent = "The requested city could not be found."
 		modal.classList.add("show");
 	  } else if (error instanceof Error && error.message === "Bad Request") {
-		modalTitleElement.textContent = "Ops!"
-		modalDescriptionElement.textContent = "Esperando o que? Digite algo!"
+		modalTitleElement.textContent = "Oops!"
+		modalDescriptionElement.textContent = "What are you waiting for? Type something!"
 		modal.classList.add("show");
 	  }
 	  else {
-		modalTitleElement.textContent = "Ops!"
-		modalDescriptionElement.textContent = "Algum erro inesperado aconteceu..."
+		modalTitleElement.textContent = "Oops!"
+		modalDescriptionElement.textContent = "An unexpected error occurred..."
 		modal.classList.add("show");
 	  }
 	  
