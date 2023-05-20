@@ -13,6 +13,13 @@ let weatherIconElement = document.querySelector(".weather-icon")
 let searchButtonElement = document.querySelector("#search-button")
 let searchBarElement = document.querySelector("#search-bar")
 
+let openModalButton = document.getElementById("openModal");
+let modal = document.getElementById("myModal");
+let closeButton = document.getElementsByClassName("close")[0];
+let modalTitleElement = document.querySelector("#modal-title")
+let modalDescriptionElement = document.querySelector("#modal-description")
+
+
 
 //https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
@@ -113,21 +120,42 @@ async function searchCityWeather() {
 	let searchedContent = searchBarElement.value;
 	try {
 	  const response = await getWeatherData(searchedContent);
-	  if (response.cod == "404"){
+	  if (response.cod === "404"){
 		throw new Error("Not Found");
-	  } else {
+	  } else if (response.cod === "400"){
+		throw new Error("Bad Request")
+	  }
+	  else {
 		showWeatherData(searchedContent);
 		localStorage.setItem("lastCityResearched", searchedContent);  
 	  }
 	} catch (error) {
-	  if (error instanceof Error && error.message == "Not Found") {
-		console.log("Error: Not Found");
-	  } else {
-		console.log("Other error occurred");
+	  if (error instanceof Error && error.message === "Not Found") {
+		modalTitleElement.textContent = "Ops!"
+		modalDescriptionElement.textContent = "Não foi possível encontrar a cidade solicitada."
+		modal.classList.add("show");
+	  } else if (error instanceof Error && error.message === "Bad Request") {
+		modalTitleElement.textContent = "Ops!"
+		modalDescriptionElement.textContent = "Esperando o que? Digite algo!"
+		modal.classList.add("show");
+	  }
+	  else {
+		modalTitleElement.textContent = "Ops!"
+		modalDescriptionElement.textContent = "Algum erro inesperado aconteceu..."
+		modal.classList.add("show");
 	  }
 	  
 	  // Stop the function execution
 	  return;
 	}
   }
+
+closeButton.addEventListener("click", function() {
+	modal.classList.remove("show");
+});
   
+window.addEventListener("click", function(event) {
+	if (event.target === modal) {
+		modal.classList.remove("show");
+	}
+});
