@@ -1,4 +1,4 @@
-# 🍹 Weather Website 🍹
+# ☀️ Weather Website ☀️
 
 The weather website, created with HTML, CSS, and JavaScript, utilizes the OpenWeatherAPI to display the real-time weather conditions of cities worldwide.
 
